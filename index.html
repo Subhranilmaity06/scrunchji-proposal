@@ -26,7 +26,11 @@
   img{max-width:100%;display:block}
   h1,h2,h3,h4{line-height:1.12;margin:0;letter-spacing:-.01em}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
-  .dots{background-image:radial-gradient(var(--blue) 1.6px, transparent 1.7px);background-size:20px 20px}
+  /* subtle texture only — faint enough to sit behind text without hurting readability */
+  .dots{background-image:radial-gradient(rgba(47,49,145,.10) 1.4px, transparent 1.5px);background-size:24px 24px}
+  /* give small/body copy on textured sections a clean backing */
+  .dots .lead,.dots .note{background:rgba(255,247,241,.9);border-radius:12px;padding:12px 16px;backdrop-filter:blur(1px)}
+  .dots .mile{background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:14px;padding:12px 14px;backdrop-filter:blur(1px)}
 
   /* Header */
   header.nav{position:sticky;top:0;z-index:60;background:rgba(255,247,241,.86);backdrop-filter:blur(12px);border-bottom:2px solid var(--blue)}
@@ -502,8 +506,8 @@
       <h2>Ready to take Scrunch Ji live?</h2>
       <p>Approve the build and we’ll start your 5-day setup. Your store, your brand, selling in India and worldwide — for ₹10,000.</p>
       <div class="hero-cta" style="justify-content:center">
-        <a class="btn btn-primary" href="mailto:subhranilmaityofficial@gmail.com?subject=Scrunch%20Ji%20—%20Approve%20Shopify%20Proposal&amp;body=Hi%2C%20we%27d%20like%20to%20go%20ahead%20with%20the%20%E2%82%B910%2C000%20store%20build%20for%20Scrunch%20Ji.">✅ Approve this proposal</a>
-        <a class="btn btn-ghost" href="mailto:subhranilmaityofficial@gmail.com?subject=Scrunch%20Ji%20Website%20—%20Question">Ask a question</a>
+        <a class="btn btn-primary" href="mailto:design@subhranilmaity.com?subject=Scrunch%20Ji%20—%20Approve%20Shopify%20Proposal&amp;body=Hi%2C%20we%27d%20like%20to%20go%20ahead%20with%20the%20%E2%82%B910%2C000%20store%20build%20for%20Scrunch%20Ji.">✅ Approve this proposal</a>
+        <a class="btn btn-ghost" href="mailto:design@subhranilmaity.com?subject=Scrunch%20Ji%20Website%20—%20Question">Ask a question</a>
       </div>
     </div>
   </div>
@@ -520,7 +524,7 @@
       <div class="f-right">
         <p style="margin:0 0 4px;color:#fff;font-weight:700">Prepared by Subhranil Maity</p>
         <p style="margin:0">Shopify &amp; D2C web developer</p>
-        <p style="margin:6px 0 0"><a href="mailto:subhranilmaityofficial@gmail.com">subhranilmaityofficial@gmail.com</a></p>
+        <p style="margin:6px 0 0"><a href="mailto:design@subhranilmaity.com">design@subhranilmaity.com</a></p>
       </div>
     </div>
     <div class="foot-rule"></div>
