@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrunch Ji — Shopify Website Proposal</title>
+<meta name="description" content="A detailed proposal to design, build and launch a fully working Shopify e-commerce store for Scrunch Ji on the Ritual theme — built for India and international markets, delivered in 5 days.">
+<meta name="theme-color" content="#2F3191">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&family=Rye&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#EC2A7B;
+    --pink-soft:#F8A5C8;
+    --pink-tint:#FDE7F0;
+    --yellow:#FFDA00;
+    --yellow-soft:#FFEC80;
+    --blue:#2F3191;
+    --blue-deep:#23255f;
+    --ink:#1b1b2b;
+    --black:#0b0b0f;
+    --cream:#FFF7F1;
+    --paper:#ffffff;
+    --muted:#6a6a82;
+    --line:#ece7f2;
+    --radius:22px;
+    --shadow:0 18px 50px -24px rgba(47,49,145,.45);
+    --shadow-sm:0 8px 24px -14px rgba(47,49,145,.5);
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;
+    font-size:16.5px;overflow-x:hidden;
+  }
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  h1,h2,h3,h4{line-height:1.12;margin:0;letter-spacing:-.01em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  .display{font-family:"Rye",serif;letter-spacing:.01em}
+
+  /* dotted + scallop brand motifs */
+  .dots{background-image:radial-gradient(var(--blue) 1.6px, transparent 1.7px);background-size:20px 20px}
+
+  /* ---------- Header ---------- */
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(255,247,241,.86);backdrop-filter:blur(12px);border-bottom:2px solid var(--blue)}
+  .nav-in{display:flex;align-items:center;gap:18px;height:66px}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .nav-logo img{height:30px;width:auto}
+  .nav-tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);border-left:2px solid var(--pink);padding-left:10px}
+  .nav-links{margin-left:auto;display:flex;gap:26px;align-items:center}
+  .nav-links a{text-decoration:none;font-weight:600;font-size:14px;color:var(--blue);opacity:.8}
+  .nav-links a:hover{opacity:1;color:var(--pink)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;text-decoration:none;
+    padding:11px 20px;border-radius:999px;border:2px solid var(--blue);transition:.18s;cursor:pointer;white-space:nowrap}
+  .btn-primary{background:var(--pink);color:#fff;border-color:var(--pink);box-shadow:var(--shadow-sm)}
+  .btn-primary:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--blue)}
+  .btn-ghost:hover{background:var(--blue);color:#fff}
+  .btn-yellow{background:var(--yellow);color:var(--blue);border-color:var(--blue)}
+  .btn-yellow:hover{transform:translateY(-2px)}
+  .nav-cta{display:flex;gap:10px;align-items:center}
+  .hamb{display:none;margin-left:auto;background:var(--blue);border:none;color:#fff;width:42px;height:42px;border-radius:12px;font-size:20px;cursor:pointer}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;background:
+      linear-gradient(180deg,#fff 0%,var(--cream) 100%);padding:60px 0 40px}
+  .hero-motif{position:absolute;right:-120px;top:-60px;width:min(560px,58vw);opacity:.16;pointer-events:none;transform:rotate(-8deg)}
+  .hero-motif2{position:absolute;left:-150px;bottom:-170px;width:min(420px,46vw);opacity:.10;pointer-events:none;transform:rotate(14deg)}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#fff;font-weight:700;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:8px 16px;border-radius:999px}
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+  .hero h1{font-size:clamp(40px,7vw,78px);font-weight:900;margin:22px 0 6px;color:var(--blue);position:relative}
+  .hero h1 .pink{color:var(--pink)}
+  .hero-sub{font-size:clamp(17px,2.4vw,21px);max-width:620px;color:#3a3a52;font-weight:500}
+  .hero-sub b{color:var(--blue)}
+  .hero-wordmark{height:clamp(44px,8vw,80px);width:auto;margin:6px 0 18px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:12px 34px;margin-top:34px;padding-top:26px;border-top:2px dashed var(--pink-soft)}
+  .hero-meta div span{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700}
+  .hero-meta div strong{font-size:16px;color:var(--blue)}
+
+  /* ---------- At a glance ---------- */
+  .glance{margin-top:-6px;padding:36px 0}
+  .glance-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .gcard{background:var(--paper);border:2px solid var(--blue);border-radius:18px;padding:18px 16px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+  .gcard .ic{font-size:22px}
+  .gcard span{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:8px}
+  .gcard strong{display:block;font-size:17px;color:var(--blue);line-height:1.2;margin-top:2px}
+  .gcard.pink{background:var(--pink);border-color:var(--pink)}
+  .gcard.pink span{color:#ffd4e6}.gcard.pink strong,.gcard.pink .ic{color:#fff}
+
+  /* ---------- Sections ---------- */
+  section.block{padding:62px 0}
+  .sec-head{display:flex;align-items:flex-end;gap:20px;margin-bottom:34px}
+  .sec-num{font-size:clamp(46px,9vw,92px);font-weight:900;color:var(--pink);line-height:.8;position:relative}
+  .sec-head .txt .kicker{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);opacity:.65}
+  .sec-head .txt h2{font-size:clamp(28px,4.6vw,46px);font-weight:900;color:var(--blue);margin-top:4px}
+  .lead{font-size:18px;color:#3a3a52;max-width:760px}
+
+  /* understanding */
+  .brand-row{display:grid;grid-template-columns:1.3fr .9fr;gap:34px;align-items:center}
+  .vals{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+  .val{background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px}
+  .val b{color:var(--pink);display:block;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+  .val p{margin:4px 0 0;font-size:14.5px;color:#4a4a63}
+  .brand-card{background:var(--blue);color:#fff;border-radius:var(--radius);padding:30px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .brand-card img{position:absolute;right:-40px;bottom:-40px;width:230px;opacity:.22;transform:rotate(-10deg)}
+  .brand-card h3{font-size:22px;margin-bottom:12px}
+  .brand-card .swatches{display:flex;gap:10px;margin:18px 0 6px}
+  .brand-card .sw{width:46px;height:46px;border-radius:12px;border:2px solid rgba(255,255,255,.5);position:relative}
+  .brand-card .sw small{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font-size:9.5px;color:#cfd0ff;font-weight:700}
+  .brand-card ul{margin:34px 0 0;padding-left:18px;font-size:14px;color:#dcdcff}
+  .brand-card li{margin:6px 0}
+
+  /* scope / deliverables */
+  .scope-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .scope-card{background:var(--paper);border:2px solid var(--blue);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm)}
+  .scope-card h3{display:flex;align-items:center;gap:12px;font-size:19px;color:var(--blue);margin-bottom:14px}
+  .scope-card h3 .n{flex:none;width:34px;height:34px;border-radius:10px;background:var(--yellow);color:var(--blue);display:grid;place-items:center;font-weight:900;font-size:15px}
+  .check{list-style:none;margin:0;padding:0}
+  .check li{position:relative;padding:7px 0 7px 30px;font-size:14.8px;color:#3f3f58;border-bottom:1px dashed var(--line)}
+  .check li:last-child{border-bottom:none}
+  .check li::before{content:"";position:absolute;left:0;top:13px;width:16px;height:16px;border-radius:5px;background:var(--pink);
+    box-shadow:inset 0 0 0 3px #fff, 0 0 0 1.5px var(--pink)}
+
+  /* india vs world */
+  .markets{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .market{border-radius:var(--radius);padding:28px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .market.india{background:linear-gradient(145deg,var(--pink),#c21e67)}
+  .market.world{background:linear-gradient(145deg,var(--blue),var(--blue-deep))}
+  .market h3{font-size:24px;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .market .flagemoji{font-size:26px}
+  .market p.m-sub{color:rgba(255,255,255,.85);font-size:14px;margin:0 0 16px}
+  .market ul{list-style:none;margin:0;padding:0}
+  .market li{padding:9px 0 9px 26px;position:relative;font-size:14.5px;border-top:1px solid rgba(255,255,255,.18)}
+  .market li b{color:#fff}
+  .market li::before{content:"✦";position:absolute;left:0;top:9px;color:var(--yellow);font-size:13px}
+  .market li:first-of-type{border-top:none}
+
+  /* apps table */
+  .apps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .app{background:var(--paper);border:1.5px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow-sm)}
+  .app .cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--pink)}
+  .app h4{font-size:16px;color:var(--blue);margin:4px 0 6px}
+  .app p{font-size:13.5px;color:#55556e;margin:0}
+
+  /* timeline */
+  .timeline{position:relative;margin-top:10px}
+  .day{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:22px 0;border-bottom:2px dashed var(--pink-soft);align-items:start}
+  .day:last-child{border-bottom:none}
+  .day .d-badge{background:var(--blue);color:#fff;border-radius:16px;padding:14px;text-align:center;box-shadow:var(--shadow-sm)}
+  .day .d-badge span{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow-soft);font-weight:700}
+  .day .d-badge strong{font-size:30px;font-weight:900;line-height:1}
+  .day .d-body h3{font-size:19px;color:var(--blue);margin-bottom:4px}
+  .day .d-body .tag{display:inline-block;background:var(--yellow);color:var(--blue);font-size:11px;font-weight:800;
+    padding:3px 10px;border-radius:999px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+  .day .d-body ul{margin:8px 0 0;padding-left:18px;font-size:14.5px;color:#45455e;columns:2;column-gap:28px}
+  .day .d-body li{margin:4px 0;break-inside:avoid}
+
+  /* pricing */
+  .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+  .plan{background:var(--paper);border:2px solid var(--line);border-radius:var(--radius);padding:28px 24px;display:flex;flex-direction:column;position:relative;box-shadow:var(--shadow-sm)}
+  .plan.feat{border-color:var(--pink);box-shadow:var(--shadow);transform:translateY(-6px)}
+  .plan .ribbon{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--pink);color:#fff;font-size:11px;
+    font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:999px;white-space:nowrap}
+  .plan .pname{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--pink)}
+  .plan .pfor{font-size:13px;color:var(--muted);margin:2px 0 14px}
+  .plan .price{font-size:40px;font-weight:900;color:var(--blue);line-height:1}
+  .plan .price small{font-size:15px;font-weight:700;color:var(--muted)}
+  .plan .usd{font-size:13px;color:var(--muted);margin-top:4px;font-weight:600}
+  .plan ul{list-style:none;margin:18px 0 22px;padding:0;flex:1}
+  .plan li{position:relative;padding:7px 0 7px 26px;font-size:13.8px;color:#44445d;border-bottom:1px solid var(--line)}
+  .plan li::before{content:"✓";position:absolute;left:0;top:7px;color:var(--pink);font-weight:900}
+  .plan li.off{color:#b9b9c8}.plan li.off::before{content:"–";color:#d3d3de}
+  .plan .btn{justify-content:center;width:100%}
+
+  .note{font-size:13px;color:var(--muted);margin-top:14px;text-align:center}
+
+  /* recurring table */
+  .tablewrap{overflow-x:auto;border:2px solid var(--blue);border-radius:var(--radius);box-shadow:var(--shadow-sm);background:#fff;margin-top:30px}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.3px}
+  th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line)}
+  thead th{background:var(--blue);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+  tbody tr:nth-child(even){background:var(--pink-tint)}
+  td b{color:var(--blue)}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--yellow);color:var(--blue)}
+  .pill.opt{background:#e9e9f3;color:var(--muted)}
+
+  /* process */
+  .proc-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .mile{display:flex;gap:16px;margin-bottom:18px}
+  .mile .mi{flex:none;width:46px;height:46px;border-radius:12px;background:var(--pink);color:#fff;display:grid;place-items:center;font-weight:900;font-size:17px}
+  .mile h4{font-size:16px;color:var(--blue)}
+  .mile p{margin:2px 0 0;font-size:14px;color:#4c4c64}
+  .need{background:var(--blue);color:#fff;border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+  .need h3{font-size:20px;margin-bottom:6px}
+  .need p.s{color:#cfd0ff;font-size:14px;margin:0 0 14px}
+  .need ul{list-style:none;margin:0;padding:0}
+  .need li{padding:8px 0 8px 28px;position:relative;font-size:14px;border-top:1px solid rgba(255,255,255,.15)}
+  .need li::before{content:"→";position:absolute;left:0;color:var(--yellow);font-weight:800}
+  .need li:first-child{border-top:none}
+
+  /* terms */
+  .terms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .term{background:var(--paper);border:1.5px solid var(--line);border-radius:16px;padding:20px}
+  .term h4{font-size:15px;color:var(--pink);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .term p{font-size:13.5px;color:#4c4c64;margin:0}
+
+  /* CTA */
+  .cta{background:
+      radial-gradient(circle at 15% 20%, rgba(255,218,0,.18), transparent 40%),
+      linear-gradient(145deg,var(--pink) 0%,#c21e67 60%,var(--blue) 140%);
+    color:#fff;border-radius:30px;padding:54px 40px;text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .cta .motif{position:absolute;right:-60px;top:-60px;width:260px;opacity:.18}
+  .cta h2{font-size:clamp(28px,4.6vw,44px);font-weight:900;margin-bottom:10px}
+  .cta p{max-width:560px;margin:0 auto 26px;color:rgba(255,255,255,.9);font-size:17px}
+  .cta .btn-primary{background:#fff;color:var(--pink);border-color:#fff}
+  .cta .btn-primary:hover{background:var(--yellow);color:var(--blue);border-color:var(--yellow)}
+  .cta .btn-ghost{color:#fff;border-color:#fff}
+  .cta .btn-ghost:hover{background:#fff;color:var(--blue)}
+
+  footer{background:var(--blue);color:#cfd0ff;padding:40px 0 30px;margin-top:70px}
+  .foot-in{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+  footer img{height:30px}
+  footer .f-right{font-size:13px;text-align:right}
+  footer a{color:var(--yellow);text-decoration:none;font-weight:600}
+  .foot-rule{height:2px;background:rgba(255,255,255,.18);margin:24px 0}
+  .foot-small{font-size:12px;color:#9a9bd6;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+  .mobnav{display:none}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:980px){
+    .glance-grid{grid-template-columns:repeat(2,1fr)}
+    .brand-row,.markets,.proc-grid{grid-template-columns:1fr}
+    .scope-grid{grid-template-columns:1fr}
+    .apps{grid-template-columns:repeat(2,1fr)}
+    .pricing{grid-template-columns:1fr}
+    .plan.feat{transform:none}
+    .day .d-body ul{columns:1}
+    .terms{grid-template-columns:1fr}
+  }
+  @media(max-width:720px){
+    .nav-links{display:none}
+    .nav-cta{display:none}
+    .hamb{display:block}
+    .mobnav.open{display:block;position:fixed;inset:66px 0 0;background:var(--cream);z-index:55;padding:28px 22px}
+    .mobnav.open a{display:block;padding:14px 0;font-size:19px;font-weight:700;color:var(--blue);border-bottom:1px dashed var(--pink-soft);text-decoration:none}
+    .mobnav.open .btn{margin-top:18px;width:100%;justify-content:center}
+    .sec-head{flex-direction:column;align-items:flex-start;gap:4px}
+    .apps{grid-template-columns:1fr}
+    .glance-grid{grid-template-columns:1fr 1fr}
+    .day{grid-template-columns:1fr;gap:12px}
+    .day .d-badge{display:inline-flex;gap:10px;align-items:baseline;padding:8px 16px}
+    .hero-meta{gap:12px 22px}
+  }
+
+  /* ---------- Print (client saves as PDF) ---------- */
+  @media print{
+    header.nav,.hamb,.mobnav,.hero-cta,.cta .btn,.nav-cta{display:none!important}
+    body{background:#fff;font-size:11.5px}
+    section.block{padding:18px 0;break-inside:avoid}
+    .hero{padding:10px 0}
+    .plan.feat{transform:none;box-shadow:none}
+    .gcard,.scope-card,.market,.plan,.brand-card,.need,.cta,.tablewrap{box-shadow:none}
+    .cta{color:#111;background:#fff;border:2px solid var(--pink)}
+    .cta h2,.cta p{color:#111}
+    a[href]:after{content:""}
+    .hero-motif,.hero-motif2,.cta .motif{opacity:.08}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="nav-logo" href="#top">
+      <img src="assets/logo-wordmark.png" alt="Scrunch Ji">
+      <span class="nav-tag">Website Proposal</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#scope">Scope</a>
+      <a href="#markets">India &amp; Global</a>
+      <a href="#timeline">5-Day Plan</a>
+      <a href="#investment">Investment</a>
+      <a href="#process">Process</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="#" onclick="window.print();return false;">Save as PDF</a>
+      <a class="btn btn-primary" href="#accept">Approve &amp; Start →</a>
+    </div>
+    <button class="hamb" aria-label="Menu" onclick="document.getElementById('mobnav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+<div class="mobnav" id="mobnav">
+  <a href="#scope" onclick="closeM()">Scope</a>
+  <a href="#markets" onclick="closeM()">India &amp; Global</a>
+  <a href="#timeline" onclick="closeM()">5-Day Plan</a>
+  <a href="#investment" onclick="closeM()">Investment</a>
+  <a href="#process" onclick="closeM()">Process</a>
+  <a class="btn btn-primary" href="#accept" onclick="closeM()">Approve &amp; Start →</a>
+</div>
+
+<a id="top"></a>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <img class="hero-motif" src="assets/scrunchie-motif.png" alt="">
+  <img class="hero-motif2" src="assets/scrunchie-motif.png" alt="">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Prepared for Scrunch Ji &nbsp;•&nbsp; 02 Oct 2026</span>
+    <h1>Your online store,<br><span class="pink">live in 5 days.</span></h1>
+    <img class="hero-wordmark" src="assets/logo-wordmark.png" alt="Scrunch Ji">
+    <p class="hero-sub">A complete proposal to design, build and launch a <b>fully working Shopify e-commerce website</b> for Scrunch Ji on the free <b>Ritual</b> theme — styled in your Indian-truck-art identity and ready to sell across <b>India and the world</b>.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#investment">See the investment →</a>
+      <a class="btn btn-yellow" href="#timeline">View the 5-day plan</a>
+      <a class="btn btn-ghost" href="#scope">What's included</a>
+    </div>
+    <div class="hero-meta">
+      <div><span>Platform</span><strong>Shopify</strong></div>
+      <div><span>Theme</span><strong>Ritual · Free</strong></div>
+      <div><span>Timeline</span><strong>5 working days</strong></div>
+      <div><span>Markets</span><strong>India + Global</strong></div>
+      <div><span>Proposal valid</span><strong>15 days</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AT A GLANCE ===== -->
+<div class="glance">
+  <div class="wrap glance-grid">
+    <div class="gcard"><div class="ic">🛍️</div><span>Build</span><strong>Full D2C store</strong></div>
+    <div class="gcard"><div class="ic">🎨</div><span>Design</span><strong>On-brand &amp; custom</strong></div>
+    <div class="gcard"><div class="ic">💳</div><span>Payments</span><strong>UPI · Cards · PayPal</strong></div>
+    <div class="gcard"><div class="ic">🚚</div><span>Shipping</span><strong>India + Overseas</strong></div>
+    <div class="gcard pink"><div class="ic">⚡</div><span>From</span><strong>₹24,999</strong></div>
+  </div>
+</div>
+
+<!-- ===== 01 UNDERSTANDING ===== -->
+<section class="block" id="brand">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div class="txt"><div class="kicker">The brand we're building for</div><h2>We get Scrunch Ji</h2></div>
+    </div>
+    <div class="brand-row">
+      <div>
+        <p class="lead">Scrunch Ji turns everyday hair styling into effortless self-expression — thoughtfully designed, handmade-in-small-batches scrunchies that mix beauty, comfort and personality. Your identity is rooted in the joyful, handcrafted world of <b>Indian truck art</b>: bold colour, expressive type and a proudly desi “जी”. Your website should feel exactly like that — playful, confident and unmistakably yours, not a generic template.</p>
+        <div class="vals">
+          <div class="val"><b>Playful</b><p>Bright, expressive storytelling that stops the scroll.</p></div>
+          <div class="val"><b>Handcrafted</b><p>Small-batch charm communicated on every product page.</p></div>
+          <div class="val"><b>Effortless</b><p>A buying experience as easy as the product promises.</p></div>
+          <div class="val"><b>Rooted + global</b><p>Proudly Indian, built to sell worldwide.</p></div>
+        </div>
+      </div>
+      <div class="brand-card">
+        <img src="assets/scrunchie-motif.png" alt="">
+        <h3>Your identity, in the site’s DNA</h3>
+        <div class="swatches">
+          <div class="sw" style="background:#EC2A7B"><small>#EC2A7B</small></div>
+          <div class="sw" style="background:#FFDA00"><small>#FFDA00</small></div>
+          <div class="sw" style="background:#2F3191"><small>#2F3191</small></div>
+          <div class="sw" style="background:#000"><small>#000000</small></div>
+        </div>
+        <ul>
+          <li>Logo wordmark + “जी” mark used throughout</li>
+          <li>Poppins type system for clean readability</li>
+          <li>Truck-art dot &amp; block-print accents</li>
+          <li>Consistent colour across every touchpoint</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 SCOPE ===== -->
+<section class="block dots" id="scope" style="background-position:center;background-blend-mode:normal">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div class="txt"><div class="kicker">Deliverables</div><h2>What we’ll build</h2></div>
+    </div>
+    <p class="lead" style="margin-bottom:30px">A complete, revenue-ready store — not just a theme install. Every screen below is designed, built, tested on mobile &amp; desktop, and handed over ready to take real orders.</p>
+    <div class="scope-grid">
+
+      <div class="scope-card">
+        <h3><span class="n">A</span> Store foundation &amp; branding</h3>
+        <ul class="check">
+          <li>Shopify store setup &amp; Ritual theme install</li>
+          <li>Brand styling: colours, Poppins fonts, logo &amp; favicon</li>
+          <li>Custom truck-art accents (dots, colour blocks, buttons)</li>
+          <li>Mega-menu header + full footer with links</li>
+          <li>Legal pages: Privacy, Terms, Shipping, Returns/Refunds</li>
+          <li>Cookie-consent banner (GDPR-ready for EU buyers)</li>
+        </ul>
+      </div>
+
+      <div class="scope-card">
+        <h3><span class="n">B</span> Homepage that sells</h3>
+        <ul class="check">
+          <li>Hero with campaign banner &amp; clear call-to-action</li>
+          <li>Featured &amp; seasonal collections</li>
+          <li>Best-sellers / new-arrivals product rows</li>
+          <li>Brand story &amp; “handmade in small batches” section</li>
+          <li>USP strip (secure pay, fast ship, easy returns)</li>
+          <li>Reviews, Instagram feed &amp; newsletter sign-up</li>
+        </ul>
+      </div>
+
+      <div class="scope-card">
+        <h3><span class="n">C</span> Products &amp; collections</h3>
+        <ul class="check">
+          <li>Collection pages with filters &amp; sorting</li>
+          <li>Colour/pattern swatches &amp; product badges (New, Sale)</li>
+          <li>Rich product pages: gallery, variants, quick-buy</li>
+          <li>Size/usage info, care, cross-sell &amp; “complete the look”</li>
+          <li>Bundles / multi-buy offers support</li>
+          <li>Upload of up to 20–50 products (per package)</li>
+        </ul>
+      </div>
+
+      <div class="scope-card">
+        <h3><span class="n">D</span> Cart, checkout &amp; conversion</h3>
+        <ul class="check">
+          <li>Slide-out cart with notes &amp; order upsell</li>
+          <li>Discount codes &amp; automatic offers</li>
+          <li>Secure checkout: UPI, cards, net-banking, wallets, COD</li>
+          <li>International checkout: PayPal &amp; global cards</li>
+          <li>Abandoned-cart recovery emails</li>
+          <li>Order confirmation &amp; tracking notifications</li>
+        </ul>
+      </div>
+
+      <div class="scope-card">
+        <h3><span class="n">E</span> Content, SEO &amp; analytics</h3>
+        <ul class="check">
+          <li>About, Contact (with form), FAQ &amp; Track-Order pages</li>
+          <li>Blog setup for styling tips &amp; launches</li>
+          <li>On-page SEO: titles, meta, alt text, clean URLs, sitemap</li>
+          <li>Speed &amp; Core-Web-Vitals optimisation</li>
+          <li>Google Analytics 4 + Meta Pixel installed</li>
+          <li>Google Search Console &amp; product feed ready</li>
+        </ul>
+      </div>
+
+      <div class="scope-card">
+        <h3><span class="n">F</span> Launch &amp; handover</h3>
+        <ul class="check">
+          <li>Connect your custom domain &amp; SSL</li>
+          <li>Full QA: mobile, tablet, desktop &amp; test orders</li>
+          <li>Go-live &amp; post-launch smoke test</li>
+          <li>Admin walkthrough video + simple how-to guide</li>
+          <li>Training: add products, run offers, read orders</li>
+          <li>Post-launch support window (per package)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 INDIA + WORLD ===== -->
+<section class="block" id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div class="txt"><div class="kicker">Sell everywhere</div><h2>Built for India &amp; the world</h2></div>
+    </div>
+    <p class="lead" style="margin-bottom:28px">One store, two audiences — fully configured so an order from Jaipur and an order from New Jersey both just work. Here’s exactly how each market is handled.</p>
+    <div class="markets">
+      <div class="market india">
+        <h3><span class="flagemoji">🇮🇳</span> India-ready</h3>
+        <p class="m-sub">Everything a modern Indian D2C store needs.</p>
+        <ul>
+          <li><b>Payments:</b> Razorpay / Cashfree — UPI, cards, net-banking, wallets &amp; EMI</li>
+          <li><b>Cash on Delivery</b> with COD rules &amp; partial-COD option</li>
+          <li><b>Shipping:</b> Shiprocket / Delhivery with pin-code serviceability</li>
+          <li><b>GST-compliant invoices</b>, HSN codes &amp; GSTIN capture</li>
+          <li><b>Pricing in ₹</b> with India-specific offers &amp; free-ship thresholds</li>
+          <li><b>RTO &amp; NDR</b> handling to cut failed deliveries</li>
+          <li><b>WhatsApp</b> order updates &amp; support (optional add-on)</li>
+        </ul>
+      </div>
+      <div class="market world">
+        <h3><span class="flagemoji">🌍</span> Globally-ready</h3>
+        <p class="m-sub">Reach customers overseas from day one.</p>
+        <ul>
+          <li><b>Shopify Markets:</b> multi-currency + auto geo-location pricing</li>
+          <li><b>Payments:</b> PayPal &amp; international cards (Stripe where available)</li>
+          <li><b>Cross-border shipping:</b> Shiprocket X / DHL with live rates</li>
+          <li><b>Duties &amp; taxes</b> handling and correct HS codes</li>
+          <li><b>Local currency display</b> &amp; rounding for clean prices</li>
+          <li><b>International SEO</b> + cookie/GDPR consent for the EU</li>
+          <li><b>Translation-ready</b> structure for future language add-ons</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">Payment gateways and couriers are activated against your business documents (PAN/GST, bank account). We configure and test everything; account approvals are issued by the providers.</p>
+  </div>
+</section>
+
+<!-- ===== 04 APPS ===== -->
+<section class="block dots" id="apps">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div class="txt"><div class="kicker">The toolkit</div><h2>Apps &amp; tech stack</h2></div>
+    </div>
+    <p class="lead" style="margin-bottom:28px">A lean, mostly-free stack chosen to keep your monthly costs low while covering payments, shipping, reviews, marketing and compliance.</p>
+    <div class="apps">
+      <div class="app"><div class="cat">Platform</div><h4>Shopify + Ritual</h4><p>Reliable hosting, secure PCI checkout and the free Ritual theme as the design base.</p></div>
+      <div class="app"><div class="cat">Payments · India</div><h4>Razorpay / Cashfree</h4><p>UPI, cards, net-banking, wallets, EMI and COD for Indian shoppers.</p></div>
+      <div class="app"><div class="cat">Payments · Global</div><h4>PayPal + Global cards</h4><p>Trusted international checkout with multi-currency via Shopify Markets.</p></div>
+      <div class="app"><div class="cat">Shipping</div><h4>Shiprocket</h4><p>Domestic + international courier aggregation, tracking and NDR tools.</p></div>
+      <div class="app"><div class="cat">Reviews</div><h4>Judge.me</h4><p>Photo reviews &amp; ratings that build trust and boost conversion.</p></div>
+      <div class="app"><div class="cat">Email &amp; automation</div><h4>Shopify Email / Klaviyo</h4><p>Welcome, abandoned-cart &amp; win-back flows to drive repeat sales.</p></div>
+      <div class="app"><div class="cat">Invoicing</div><h4>GST Invoice app</h4><p>Automatic GST-compliant invoices for every Indian order.</p></div>
+      <div class="app"><div class="cat">Messaging</div><h4>WhatsApp (Interakt)</h4><p>Order updates, COD confirmation &amp; support — optional add-on.</p></div>
+      <div class="app"><div class="cat">Analytics</div><h4>GA4 + Meta Pixel</h4><p>Track traffic, sales and ad performance from day one.</p></div>
+    </div>
+    <p class="note">Final app choices are confirmed with you; equivalents are available if you already use a preferred provider.</p>
+  </div>
+</section>
+
+<!-- ===== 05 TIMELINE ===== -->
+<section class="block" id="timeline">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05</div>
+      <div class="txt"><div class="kicker">Start to live in one working week</div><h2>The 5-day plan</h2></div>
+    </div>
+    <p class="lead" style="margin-bottom:10px">The clock starts once the advance and your brand/product assets are received. Each day ends with a shareable preview link so you’re never in the dark.</p>
+    <div class="timeline">
+      <div class="day">
+        <div class="d-badge"><span>Day</span><strong>1</strong></div>
+        <div class="d-body">
+          <span class="tag">Setup &amp; Foundation</span>
+          <h3>Store, theme &amp; brand kit</h3>
+          <ul>
+            <li>Create/access Shopify store</li>
+            <li>Install &amp; configure Ritual</li>
+            <li>Apply colours, fonts, logo, favicon</li>
+            <li>Header, mega-menu &amp; footer structure</li>
+            <li>Collection architecture planned</li>
+            <li>Shared preview link #1</li>
+          </ul>
+        </div>
+      </div>
+      <div class="day">
+        <div class="d-badge"><span>Day</span><strong>2</strong></div>
+        <div class="d-body">
+          <span class="tag">Products &amp; Collections</span>
+          <h3>Catalogue &amp; product pages</h3>
+          <ul>
+            <li>Upload products, variants &amp; swatches</li>
+            <li>Collections with filters &amp; badges</li>
+            <li>Product-page layout &amp; cross-sell</li>
+            <li>Bundles / multi-buy setup</li>
+            <li>Pricing in ₹ configured</li>
+            <li>Shared preview link #2</li>
+          </ul>
+        </div>
+      </div>
+      <div class="day">
+        <div class="d-badge"><span>Day</span><strong>3</strong></div>
+        <div class="d-body">
+          <span class="tag">Homepage &amp; Content</span>
+          <h3>Design the story &amp; pages</h3>
+          <ul>
+            <li>Homepage sections &amp; campaign hero</li>
+            <li>About, Contact, FAQ, Track Order</li>
+            <li>Legal &amp; policy pages</li>
+            <li>Blog setup</li>
+            <li>Newsletter &amp; Instagram feed</li>
+            <li>Shared preview link #3</li>
+          </ul>
+        </div>
+      </div>
+      <div class="day">
+        <div class="d-badge"><span>Day</span><strong>4</strong></div>
+        <div class="d-body">
+          <span class="tag">Payments, Shipping &amp; Apps</span>
+          <h3>Make it transact — India + global</h3>
+          <ul>
+            <li>Razorpay/Cashfree + COD</li>
+            <li>PayPal &amp; Shopify Markets (multi-currency)</li>
+            <li>Shiprocket domestic + international</li>
+            <li>GST invoicing &amp; taxes</li>
+            <li>Reviews, email flows, GA4 + Pixel</li>
+            <li>Test transactions</li>
+          </ul>
+        </div>
+      </div>
+      <div class="day">
+        <div class="d-badge"><span>Day</span><strong>5</strong></div>
+        <div class="d-body">
+          <span class="tag">QA, Launch &amp; Handover</span>
+          <h3>Go live with confidence</h3>
+          <ul>
+            <li>Full mobile/desktop QA</li>
+            <li>Live test orders (India + intl)</li>
+            <li>Connect domain + SSL</li>
+            <li>SEO, speed &amp; final polish</li>
+            <li>Go-live 🚀</li>
+            <li>Training video + handover guide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="note">Timeline assumes timely feedback and that product photos, descriptions and business documents are available on Day 1. A realistic buffer: payment-gateway/courier approval times are controlled by the providers.</p>
+  </div>
+</section>
+
+<!-- ===== 06 INVESTMENT ===== -->
+<section class="block dots" id="investment">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06</div>
+      <div class="txt"><div class="kicker">Transparent pricing</div><h2>Investment</h2></div>
+    </div>
+    <p class="lead" style="margin-bottom:34px">One-time build fee — no hidden charges. Pick the scope that fits your launch. The <b>Growth</b> package is recommended for a store selling in India <i>and</i> abroad.</p>
+
+    <div class="pricing">
+      <div class="plan">
+        <div class="pname">Launch</div>
+        <div class="pfor">Clean India-first store</div>
+        <div class="price">₹24,999</div>
+        <div class="usd">≈ $300 · international from $600</div>
+        <ul>
+          <li>Ritual theme + full brand styling</li>
+          <li>Homepage + core pages</li>
+          <li>Up to 20 products uploaded</li>
+          <li>India payments (UPI/cards) + COD</li>
+          <li>Shiprocket domestic shipping</li>
+          <li>GST invoicing + legal pages</li>
+          <li>Basic SEO + GA4</li>
+          <li>1 revision round · 7-day support</li>
+          <li class="off">International / multi-currency</li>
+          <li class="off">Email automation &amp; reviews</li>
+        </ul>
+        <a class="btn btn-ghost" href="#accept">Choose Launch</a>
+      </div>
+
+      <div class="plan feat">
+        <div class="ribbon">★ Recommended</div>
+        <div class="pname">Growth</div>
+        <div class="pfor">India + international, done right</div>
+        <div class="price">₹44,999</div>
+        <div class="usd">≈ $540 · international from $1,200</div>
+        <ul>
+          <li><b>Everything in Launch, plus:</b></li>
+          <li>International selling — Shopify Markets &amp; multi-currency</li>
+          <li>PayPal + global cards + cross-border shipping</li>
+          <li>Up to 50 products uploaded</li>
+          <li>Reviews (Judge.me) + email automation</li>
+          <li>Abandoned-cart recovery</li>
+          <li>WhatsApp order updates setup</li>
+          <li>Blog + advanced on-page SEO</li>
+          <li>2 revision rounds · 14-day support</li>
+        </ul>
+        <a class="btn btn-primary" href="#accept">Choose Growth →</a>
+      </div>
+
+      <div class="plan">
+        <div class="pname">Scale</div>
+        <div class="pfor">Premium, custom &amp; future-proof</div>
+        <div class="price">₹74,999</div>
+        <div class="usd">≈ $900 · international from $2,000</div>
+        <ul>
+          <li><b>Everything in Growth, plus:</b></li>
+          <li>Custom-coded truck-art sections &amp; animations</li>
+          <li>Subscriptions / loyalty setup</li>
+          <li>100+ products &amp; bundle merchandising</li>
+          <li>Advanced marketing flows (Klaviyo)</li>
+          <li>Conversion-rate &amp; speed deep-optimisation</li>
+          <li>Product-photo &amp; content guidance</li>
+          <li>3 revision rounds · 30-day support</li>
+          <li>Live training session for your team</li>
+        </ul>
+        <a class="btn btn-ghost" href="#accept">Choose Scale</a>
+      </div>
+    </div>
+    <p class="note">Prices are indicative one-time development fees (exclusive of GST where applicable). Custom scope can be quoted on request.</p>
+
+    <h3 style="margin:48px 0 6px;color:var(--blue);font-size:22px">Ongoing platform costs <small style="font-weight:600;color:var(--muted);font-size:14px">— billed directly to you by each provider, not by us</small></h3>
+    <p style="color:#4c4c64;max-width:780px;font-size:15px">These are the real running costs of any Shopify store. Most tools on our stack are free to start; you only pay as you grow.</p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Service</th><th>What it's for</th><th>Indicative cost (India)</th><th>Type</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>Shopify plan</b></td><td>Hosting, checkout, admin</td><td>≈ ₹1,994 / month (Basic, billed yearly)</td><td><span class="pill">Required</span></td></tr>
+          <tr><td><b>Domain name</b></td><td>yourbrand.com / .in</td><td>≈ ₹700–₹1,500 / year</td><td><span class="pill">Required</span></td></tr>
+          <tr><td><b>Razorpay / Cashfree</b></td><td>India payments</td><td>₹0 setup · ~2% per transaction</td><td><span class="pill">Required</span></td></tr>
+          <tr><td><b>PayPal</b></td><td>International payments</td><td>₹0 setup · ~4–4.4% + fixed fee</td><td><span class="pill">Required</span></td></tr>
+          <tr><td><b>Shiprocket</b></td><td>Shipping &amp; tracking</td><td>Free plan · pay per shipment</td><td><span class="pill">Required</span></td></tr>
+          <tr><td><b>Judge.me reviews</b></td><td>Product reviews</td><td>Free · Pro ≈ $15 / month</td><td><span class="pill opt">Recommended</span></td></tr>
+          <tr><td><b>Email (Shopify/Klaviyo)</b></td><td>Marketing &amp; automation</td><td>Free tier · scales with contacts</td><td><span class="pill opt">Recommended</span></td></tr>
+          <tr><td><b>GST invoice app</b></td><td>Compliant invoices</td><td>₹0–₹500 / month</td><td><span class="pill opt">India add-on</span></td></tr>
+          <tr><td><b>WhatsApp (Interakt)</b></td><td>Order updates &amp; support</td><td>≈ ₹2,000–₹3,000 / month</td><td><span class="pill opt">Optional</span></td></tr>
+          <tr><td><b>Ritual theme</b></td><td>Store design base</td><td><b>₹0 — free theme by Shopify</b></td><td><span class="pill">Included</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Costs shown are indicative as of October 2026 and set directly by each provider — we’ll confirm live rates at signup and help you start on free tiers wherever possible.</p>
+  </div>
+</section>
+
+<!-- ===== 07 PROCESS ===== -->
+<section class="block" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07</div>
+      <div class="txt"><div class="kicker">Simple &amp; collaborative</div><h2>How we work</h2></div>
+    </div>
+    <div class="proc-grid">
+      <div>
+        <div class="mile"><div class="mi">1</div><div><h4>Approve &amp; kick off</h4><p>You pick a package and pay 50% to start. We send a shared checklist for assets.</p></div></div>
+        <div class="mile"><div class="mi">2</div><div><h4>Daily previews</h4><p>Each of the 5 days ends with a live preview link and a quick update, so you always know where things stand.</p></div></div>
+        <div class="mile"><div class="mi">3</div><div><h4>Revisions</h4><p>We refine with your feedback within the included revision rounds for your package.</p></div></div>
+        <div class="mile"><div class="mi">4</div><div><h4>Launch &amp; handover</h4><p>Final 50% on go-live. You receive a training video, how-to guide and support window.</p></div></div>
+      </div>
+      <div class="need">
+        <h3>What we’ll need from you</h3>
+        <p class="s">Having these ready on Day 1 keeps the 5-day promise on track.</p>
+        <ul>
+          <li>Logo &amp; brand guide <b>— already have ✓</b></li>
+          <li>Product photos, names, descriptions &amp; prices</li>
+          <li>Stock quantities &amp; variants (colours/patterns)</li>
+          <li>Business details: PAN/GST &amp; bank account for payouts</li>
+          <li>Domain (owned, or we’ll help you buy one)</li>
+          <li>Shipping rules: zones, rates, free-ship threshold</li>
+          <li>Policy preferences (or use our ready templates)</li>
+          <li>Social links &amp; any launch offer</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="terms" style="margin-top:34px">
+      <div class="term"><h4>💰 Payment</h4><p>50% to start, 50% on go-live. Easy UPI/bank transfer. GST invoice provided.</p></div>
+      <div class="term"><h4>⏱️ Timeline</h4><p>5 working days from receipt of advance + assets. Provider approval times are external.</p></div>
+      <div class="term"><h4>🔁 Revisions</h4><p>1–3 rounds included by package. Further changes quoted at a fair hourly rate.</p></div>
+      <div class="term"><h4>🔑 Ownership</h4><p>The store, domain and all accounts are 100% yours — created in your name.</p></div>
+      <div class="term"><h4>🛟 Support</h4><p>7–30 days post-launch support by package. Monthly care plans available.</p></div>
+      <div class="term"><h4>📄 Validity</h4><p>This proposal &amp; pricing are valid for 15 days from 02 Oct 2026.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA / ACCEPT ===== -->
+<section class="block" id="accept">
+  <div class="wrap">
+    <div class="cta">
+      <img class="motif" src="assets/scrunchie-motif.png" alt="">
+      <h2>Ready to take Scrunch Ji live?</h2>
+      <p>Approve a package and we’ll kick off your 5-day build. Your store, your brand, selling in India and across the world.</p>
+      <div class="hero-cta" style="justify-content:center">
+        <a class="btn btn-primary" href="mailto:subhranilmaityofficial@gmail.com?subject=Scrunch%20Ji%20—%20Approve%20Shopify%20Proposal&amp;body=Hi%2C%20we%27d%20like%20to%20go%20ahead%20with%20the%20____%20package%20for%20the%20Scrunch%20Ji%20store.">✅ Approve this proposal</a>
+        <a class="btn btn-ghost" href="mailto:subhranilmaityofficial@gmail.com?subject=Scrunch%20Ji%20Website%20—%20Question">Ask a question</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <img src="assets/logo-wordmark.png" alt="Scrunch Ji" style="filter:brightness(0) invert(1);opacity:.95">
+        <p style="margin:12px 0 0;font-size:13px;max-width:360px;color:#bcbdf0">Shopify e-commerce website proposal — designed, built &amp; launched for Scrunch Ji on the Ritual theme.</p>
+      </div>
+      <div class="f-right">
+        <p style="margin:0 0 4px;color:#fff;font-weight:700">Prepared by Subhranil Maity</p>
+        <p style="margin:0">Shopify &amp; D2C web developer</p>
+        <p style="margin:6px 0 0"><a href="mailto:subhranilmaityofficial@gmail.com">subhranilmaityofficial@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <div class="foot-small">
+      <span>© 2026 · Proposal for Scrunch Ji · Confidential</span>
+      <span>Valid for 15 days from 02 Oct 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function closeM(){document.getElementById('mobnav').classList.remove('open')}
+  // active-link highlight + close mobile nav on scroll
+  const ids=['scope','markets','timeline','investment','process'];
+  const links=[...document.querySelectorAll('.nav-links a')];
+  const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
+    links.forEach(l=>l.style.color='');
+    const a=links.find(l=>l.getAttribute('href')==='#'+e.target.id);
+    if(a)a.style.color='var(--pink)';}})},{rootMargin:'-45% 0px -50% 0px'});
+  ids.forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el)});
+</script>
+</body>
+</html>
